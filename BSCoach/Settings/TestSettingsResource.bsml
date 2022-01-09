@@ -1,0 +1,12 @@
+﻿<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'>
+  <settings-container>
+    <horizontal>
+      <text text='Test Settings'  font-size='7' />
+    </horizontal>
+
+    <bool-setting text='Enable Note Centerlines' value='notegrid-enabled'
+                  get-event="refresh-ui-values"
+                  hover-hint='Nothing happens. This is only a test' />
+  </settings-container>
+</bg>
+

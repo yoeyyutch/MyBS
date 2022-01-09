@@ -1,0 +1,10 @@
+﻿<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'>
+  <settings-container>
+    <horizontal>
+      <text text='MyBS'  font-size='7' />
+    </horizontal>
+    <bool-setting text='Show note lanes' value='show-note-lanes'
+                  hover-hint='Show note lane centerlines' />
+  </settings-container>
+</bg>
+

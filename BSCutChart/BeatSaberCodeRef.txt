@@ -1,0 +1,40 @@
+﻿
+
+-------------------------------
+y-position of notes
+Important classes:
+	BeatmapObjectSpawnMowvementData
+
+The dafault y-position for notes is:
+
+
+
+-------------------------------
+Player height
+
+Default player height is 1.8m.
+Player height is used to calculate the y-offset value for the for the notes. 
+
+public class BeatmapObjectSpawnControllerPlayerHeightSetter : MonoBehaviour
+
+	public static float JumpOffsetYForPlayerHeight(float playerHeight)
+	{
+		return Mathf.Clamp((playerHeight - 1.8f) * 0.5f, -0.2f, 0.6f);
+	}
+
+--------------------------------
+Note Cut Directionss
+ public enum NoteCutDirection
+{
+0	Up,
+1	Down,
+2	Left,
+3	Right,
+4	UpLeft,
+5	UpRight,
+6	DownLeft,
+7	DownRight,
+8	Any,
+9   None
+}
+
