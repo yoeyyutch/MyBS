@@ -128,7 +128,7 @@ namespace BSAccTargetLines
 			}
 			try
 			{
-				harmonyInstance.UnpatchAll(HARMONYID);
+				harmonyInstance.UnpatchSelf();
 				log.Info("Harmony patches unloaded");
 			}
 			catch (Exception e)
