@@ -7,7 +7,6 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using HarmonyLib;
 
 namespace BSAccTargetLines
 {
@@ -19,7 +18,7 @@ namespace BSAccTargetLines
 			
 		internal const string HARMONYID = "com.yoeyyutch.BeatSaber.BSAccTargetLines";
 		internal static bool harmonyPatchesLoaded = false;
-		internal static readonly Harmony harmony = new Harmony(HARMONYID);
+		internal static readonly HarmonyLib.Harmony harmonyInstance = new HarmonyLib.Harmony(HARMONYID);
 
 		public static bool InMenu = true;
 		public static float PlayerHeight = 1.7f;
@@ -111,7 +110,7 @@ namespace BSAccTargetLines
 			}
 			try
 			{
-				harmony.PatchAll(Assembly.GetExecutingAssembly());
+				harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
 				log.Info("Harmony patches loaded");
 			}
 			catch (Exception e)
@@ -121,30 +120,30 @@ namespace BSAccTargetLines
 			}
 			harmonyPatchesLoaded = true;
 		}
-		//internal void UnloadHarmonyPatches()
-		//{
-		//	if (!harmonyPatchesLoaded)
-		//	{
-		//		return;
-		//	}
-		//	try
-		//	{
-		//		harmonyInstance.UnpatchAll(HARMONYID);
-		//		log.Info("Harmony patches unloaded");
-		//	}
-		//	catch (Exception e)
-		//	{
-		//		log.Error("Harmony failed to unload");
-		//		log.Error(e.ToString());
-		//	}
-		//	harmonyPatchesLoaded = false;
-		//}
+		internal void UnloadHarmonyPatches()
+		{
+			if (!harmonyPatchesLoaded)
+			{
+				return;
+			}
+			try
+			{
+				harmonyInstance.UnpatchAll(HARMONYID);
+				log.Info("Harmony patches unloaded");
+			}
+			catch (Exception e)
+			{
+				log.Error("Harmony failed to unload");
+				log.Error(e.ToString());
+			}
+			harmonyPatchesLoaded = false;
+		}
 
 		[OnExit]
 		public void OnApplicationQuit()
 		{
 			RemoveEvents();
-			//UnloadHarmonyPatches(); 
+			UnloadHarmonyPatches(); 
 			GameObject.Destroy(NoteGrid.Instance);
 		}
 	}
